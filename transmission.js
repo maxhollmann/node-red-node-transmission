@@ -105,12 +105,14 @@ module.exports = function(RED) {
     node.on("input", function(msg) {
       node.log("Entering Add Torrent section");
       node.status({fill:"blue",shape:"dot",text:"Calling Transmission"});
-      var url;
+      var url, path;
       var msg2 = {};
       url = msg.url || n.url;
+      path = msg.path || n.path;
       node.log(url);
+      node.log(path);
 
-      TransmissionAPI.addUrl(url,function(err, result) {
+      TransmissionAPI.addUrl(url,{"download-dir":path},function(err, result) {
         node.status({fill:"green", shape:"dot", text:"processing"});
 
         msg.topic = "/transmission.v1/torrentAdd";

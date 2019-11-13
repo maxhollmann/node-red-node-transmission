@@ -85,6 +85,10 @@
          <label for="node-input-url"><i class="fa fa-tag"></i> Url</label>
          <input type="text" id="node-input-url" placeholder="url">
     </div>
+    <div class="form-row node-input-path">
+        <label for="node-input-path"><i class="fa fa-tag"></i> Destination folder</label>
+        <input type="text" id="node-input-path" placeholder="/home/user">
+    </div>
 </script>
 
 <script type="text/x-red" data-help-name="Transmission Add Torrent">
@@ -100,7 +104,8 @@
         defaults: {
             config: {type:"transmission-config",required:true},
             url: {value: "",required:false},
-            name: {value:""}
+            name: {value:""},
+            path: {value:"",required:false}
         },
         inputs:1,
         outputs:1,
